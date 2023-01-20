@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package test2;
+package Perpustakaan;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -344,6 +344,17 @@ public class FormBuku extends javax.swing.JFrame {
 
     private void buttonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeleteActionPerformed
         // TODO add your handling code here:
+        try{
+            int confirm;
+            if((confirm = JOptionPane.showConfirmDialog(null,"Apakah anda mau menghapus data ini?","Konfirmasi",JOptionPane.YES_NO_OPTION))==0){
+                st = cn.createStatement();
+                st.executeUpdate("DELETE FROM `buku` WHERE kodeBuku='"+tabModel.getValueAt(tableBuku.getSelectedRow(), 0)+"'");
+                ShowData("");
+                reset();
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_buttonDeleteActionPerformed
 
     private void buttonResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonResetActionPerformed
