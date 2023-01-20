@@ -24,6 +24,17 @@ public class FormBuku extends javax.swing.JFrame {
         tabModel = new DefaultTableModel(null,tab);
         tableBuku.setModel(tabModel);
     }
+    public void reset(){
+            inputKode.setText("");
+            inputJudul.setText("");
+            inputPengrang.setText("");
+            inputPenerbit.setText("");
+            inputGenre.setText("");
+            inputJumlah.setText("");
+            buttonBuat.setEnabled(true);
+            buttonUpdate.setEnabled(false);
+            buttonDelete.setEnabled(false);
+    }
     
     public void ShowData(String where){
         try{
@@ -314,6 +325,21 @@ public class FormBuku extends javax.swing.JFrame {
 
     private void buttonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonUpdateActionPerformed
         // TODO add your handling code here:
+        try{
+            st = cn.createStatement();
+            st.executeUpdate("UPDATE `buku` SET "
+                    +"kodeBuku='"+inputKode.getText()+"',"
+                    +"judulBuku='"+inputJudul.getText()+"',"
+                    +"pengarangBuku='"+inputPengrang.getText()+"',"
+                    +"penerbitBuku='"+inputPenerbit.getText()+"',"
+                    +"genreBuku='"+inputGenre.getText()+"',"
+                    +"jumlahBuku='"+inputJumlah.getText()+"'");
+            ShowData("");
+            JOptionPane.showMessageDialog(null,"Perubahan Tersimpan");
+            reset();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_buttonUpdateActionPerformed
 
     private void buttonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeleteActionPerformed
@@ -322,15 +348,7 @@ public class FormBuku extends javax.swing.JFrame {
 
     private void buttonResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonResetActionPerformed
         // TODO add your handling code here:
-            inputKode.setText("");
-            inputJudul.setText("");
-            inputPengrang.setText("");
-            inputPenerbit.setText("");
-            inputGenre.setText("");
-            inputJumlah.setText("");
-            buttonBuat.setEnabled(true);
-            buttonUpdate.setEnabled(false);
-            buttonDelete.setEnabled(false);
+            reset();
     }//GEN-LAST:event_buttonResetActionPerformed
 
     private void tableBukuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableBukuMouseClicked
