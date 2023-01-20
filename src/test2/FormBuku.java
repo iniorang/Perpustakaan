@@ -19,7 +19,7 @@ public class FormBuku extends javax.swing.JFrame {
     Connection cn = ConnectionSetup.setup();
     public void tab(){
         Object[] tab = {
-           "id","kode_buku","judul_buku","genre_buku","penulis_buku"
+           "id","Judul Buku","Pengarang","Penerbit","Genre"
         };
         tabModel = new DefaultTableModel(null,tab);
         tableBuku.setModel(tabModel);
@@ -35,10 +35,10 @@ public class FormBuku extends javax.swing.JFrame {
             while (rs.next()){
                 Object[] data = {
                     rs.getString("id"),
-                    rs.getString("kode_buku"),
-                    rs.getString("judul_buku"),
-                    rs.getString("genre_buku"),
-                    rs.getString("penulis_buku"),
+                    rs.getString("judul"),
+                    rs.getString("pengarang"),
+                    rs.getString("penerbit"),
+                    rs.getString("genre"),
                 };
                 tabModel.addRow(data);
             }
@@ -69,13 +69,13 @@ public class FormBuku extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        inputKode = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
         inputJudul = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        inputPengrang = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        inputGenre = new javax.swing.JTextField();
+        inputPenerbit = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        inputPenulis = new javax.swing.JTextField();
+        inputGenre = new javax.swing.JTextField();
         buttonBuat = new javax.swing.JButton();
         buttonUpdate = new javax.swing.JButton();
         buttonDelete = new javax.swing.JButton();
@@ -89,15 +89,7 @@ public class FormBuku extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Management Buku");
 
-        jLabel2.setText("Kode");
-
-        inputKode.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inputKodeActionPerformed(evt);
-            }
-        });
-
-        jLabel3.setText("Judul");
+        jLabel2.setText("Judul");
 
         inputJudul.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -105,19 +97,27 @@ public class FormBuku extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setText("Genre");
+        jLabel3.setText("Pengarang");
+
+        inputPengrang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputPengrangActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("Penerbit");
+
+        inputPenerbit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputPenerbitActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Genre");
 
         inputGenre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inputGenreActionPerformed(evt);
-            }
-        });
-
-        jLabel5.setText("Penulis");
-
-        inputPenulis.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inputPenulisActionPerformed(evt);
             }
         });
 
@@ -173,39 +173,31 @@ public class FormBuku extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(inputGenre))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(inputJudul))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(inputKode))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(29, 29, 29)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(inputPenulis)
+                            .addComponent(inputPenerbit, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(inputPengrang, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(inputJudul, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(inputGenre, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(buttonBuat, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(buttonUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(buttonDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(buttonReset, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(buttonBuat, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(buttonUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(buttonDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(buttonReset, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(52, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -218,19 +210,19 @@ public class FormBuku extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
-                            .addComponent(inputKode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
                             .addComponent(inputJudul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(inputPengrang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(inputGenre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(inputPenerbit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(inputPenulis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(inputGenre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(buttonBuat)
@@ -245,33 +237,33 @@ public class FormBuku extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void inputKodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputKodeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_inputKodeActionPerformed
-
     private void inputJudulActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputJudulActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_inputJudulActionPerformed
+
+    private void inputPengrangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputPengrangActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputPengrangActionPerformed
+
+    private void inputPenerbitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputPenerbitActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputPenerbitActionPerformed
 
     private void inputGenreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputGenreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_inputGenreActionPerformed
 
-    private void inputPenulisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputPenulisActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_inputPenulisActionPerformed
-
     private void buttonBuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBuatActionPerformed
         // TODO add your handling code here:
         try{
             st = cn.createStatement();
-            st.executeUpdate("INSERT INTO `buku`" + " VALUES (NULL,'h','h','h','h')");
+            st.executeUpdate("INSERT INTO `buku VALUES ("+inputJudul.getText()+"','"+inputPengrang.getText()+"','"+inputPenerbit.getText()+"','"+inputGenre.getText()+"')");
             ShowData("");
             JOptionPane.showMessageDialog(null,"Simpan Berhasil");
-            inputKode.setText("");
             inputJudul.setText("");
+            inputPengrang.setText("");
+            inputPenerbit.setText("");
             inputGenre.setText("");
-            inputPenulis.setText("");
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -291,10 +283,10 @@ public class FormBuku extends javax.swing.JFrame {
 
     private void tableBukuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableBukuMouseClicked
         // TODO add your handling code here:
-        inputKode.setText(tableBuku.getValueAt(tableBuku.getSelectedRow(), 0).toString());
-        inputJudul.setText(tableBuku.getValueAt(tableBuku.getSelectedRow(), 1).toString());
-        inputGenre.setText(tableBuku.getValueAt(tableBuku.getSelectedRow(), 2).toString());
-        inputPenulis.setText(tableBuku.getValueAt(tableBuku.getSelectedRow(), 3).toString());
+        inputJudul.setText(tableBuku.getValueAt(tableBuku.getSelectedRow(), 0).toString());
+        inputPengrang.setText(tableBuku.getValueAt(tableBuku.getSelectedRow(), 1).toString());
+        inputPenerbit.setText(tableBuku.getValueAt(tableBuku.getSelectedRow(), 2).toString());
+        inputGenre.setText(tableBuku.getValueAt(tableBuku.getSelectedRow(), 3).toString());
         buttonBuat.setEnabled(false);
         buttonUpdate.setEnabled(true);
         buttonDelete.setEnabled(true);
@@ -342,8 +334,8 @@ public class FormBuku extends javax.swing.JFrame {
     private javax.swing.JButton buttonUpdate;
     private javax.swing.JTextField inputGenre;
     private javax.swing.JTextField inputJudul;
-    private javax.swing.JTextField inputKode;
-    private javax.swing.JTextField inputPenulis;
+    private javax.swing.JTextField inputPenerbit;
+    private javax.swing.JTextField inputPengrang;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
