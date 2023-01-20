@@ -19,7 +19,7 @@ public class FormBuku extends javax.swing.JFrame {
     Connection cn = ConnectionSetup.setup();
     public void tab(){
         Object[] tab = {
-           "id","Judul Buku","Pengarang","Penerbit","Genre"
+           "Kode","Judul Buku","Pengarang","Penerbit","Genre","Jumlah"
         };
         tabModel = new DefaultTableModel(null,tab);
         tableBuku.setModel(tabModel);
@@ -34,11 +34,12 @@ public class FormBuku extends javax.swing.JFrame {
             
             while (rs.next()){
                 Object[] data = {
-                    rs.getString("id"),
-                    rs.getString("judul"),
-                    rs.getString("pengarang"),
-                    rs.getString("penerbit"),
-                    rs.getString("genre"),
+                    rs.getString("kodeBuku"),
+                    rs.getString("judulBuku"),
+                    rs.getString("pengarangBuku"),
+                    rs.getString("penerbitBuku"),
+                    rs.getString("genreBuku"),
+                    rs.getString("jumlahBuku")
                 };
                 tabModel.addRow(data);
             }
@@ -227,8 +228,8 @@ public class FormBuku extends javax.swing.JFrame {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(buttonReset, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(455, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -297,13 +298,15 @@ public class FormBuku extends javax.swing.JFrame {
         // TODO add your handling code here:
         try{
             st = cn.createStatement();
-            st.executeUpdate("INSERT INTO `buku VALUES ("+inputJudul.getText()+"','"+inputPengrang.getText()+"','"+inputPenerbit.getText()+"','"+inputGenre.getText()+"')");
+            st.executeUpdate("INSERT INTO `buku` VALUES ('"+inputKode.getText()+"','"+inputJudul.getText()+"','"+inputPengrang.getText()+"','"+inputPenerbit.getText()+"','"+inputGenre.getText()+"','"+inputJumlah.getText()+"')");
             ShowData("");
             JOptionPane.showMessageDialog(null,"Simpan Berhasil");
+            inputKode.setText("");
             inputJudul.setText("");
             inputPengrang.setText("");
             inputPenerbit.setText("");
             inputGenre.setText("");
+            inputJumlah.setText("");
         }catch(Exception e){
             e.printStackTrace();
         }
