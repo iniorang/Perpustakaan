@@ -322,6 +322,15 @@ public class FormBuku extends javax.swing.JFrame {
 
     private void buttonResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonResetActionPerformed
         // TODO add your handling code here:
+            inputKode.setText("");
+            inputJudul.setText("");
+            inputPengrang.setText("");
+            inputPenerbit.setText("");
+            inputGenre.setText("");
+            inputJumlah.setText("");
+            buttonBuat.setEnabled(true);
+            buttonUpdate.setEnabled(false);
+            buttonDelete.setEnabled(false);
     }//GEN-LAST:event_buttonResetActionPerformed
 
     private void tableBukuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableBukuMouseClicked
