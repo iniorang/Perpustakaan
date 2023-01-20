@@ -326,10 +326,12 @@ public class FormBuku extends javax.swing.JFrame {
 
     private void tableBukuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableBukuMouseClicked
         // TODO add your handling code here:
-        inputJudul.setText(tableBuku.getValueAt(tableBuku.getSelectedRow(), 0).toString());
-        inputPengrang.setText(tableBuku.getValueAt(tableBuku.getSelectedRow(), 1).toString());
-        inputPenerbit.setText(tableBuku.getValueAt(tableBuku.getSelectedRow(), 2).toString());
-        inputGenre.setText(tableBuku.getValueAt(tableBuku.getSelectedRow(), 3).toString());
+        inputKode.setText(tableBuku.getValueAt(tableBuku.getSelectedRow(), 0).toString());
+        inputJudul.setText(tableBuku.getValueAt(tableBuku.getSelectedRow(), 1).toString());
+        inputPengrang.setText(tableBuku.getValueAt(tableBuku.getSelectedRow(), 2).toString());
+        inputPenerbit.setText(tableBuku.getValueAt(tableBuku.getSelectedRow(), 3).toString());
+        inputGenre.setText(tableBuku.getValueAt(tableBuku.getSelectedRow(), 4).toString());
+        inputJumlah.setText(tableBuku.getValueAt(tableBuku.getSelectedRow(), 5).toString());
         buttonBuat.setEnabled(false);
         buttonUpdate.setEnabled(true);
         buttonDelete.setEnabled(true);
