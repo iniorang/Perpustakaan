@@ -1,2 +1,0 @@
-com.mycompany.perpustakaangui.FormTransaksi$1
-com.mycompany.perpustakaangui.FormTransaksi
