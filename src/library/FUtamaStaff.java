@@ -141,13 +141,13 @@ public class FUtamaStaff extends javax.swing.JFrame {
 
     private void AturBukuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AturBukuActionPerformed
         // TODO add your handling code here:
-        new FBuku().show();
+        new FBukuStaff().show();
         this.dispose();
     }//GEN-LAST:event_AturBukuActionPerformed
 
     private void AturTransaksiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AturTransaksiActionPerformed
         // TODO add your handling code here:
-        new FTransaksi().show();
+        new FTransaksiStaff().show();
         this.dispose();
     }//GEN-LAST:event_AturTransaksiActionPerformed
 
@@ -159,7 +159,7 @@ public class FUtamaStaff extends javax.swing.JFrame {
 
     private void AturMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AturMemberActionPerformed
         // TODO add your handling code here:
-        new FDataAnggota().show();
+        new FDataAnggotaStaff().show();
         this.dispose();
     }//GEN-LAST:event_AturMemberActionPerformed
 

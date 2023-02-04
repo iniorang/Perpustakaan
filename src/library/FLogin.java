@@ -30,7 +30,7 @@ public class FLogin extends javax.swing.JFrame {
         try
         {
            Statement st=kon.createStatement();
-           String sql="SELECT * FROM tbl_staff WHERE username='"+user.getText()+"' and password='"+pass.getText()+"' and level='"+level.getSelectedItem()+"'";
+           String sql="SELECT * FROM tbl_user WHERE username='"+user.getText()+"' and password='"+pass.getText()+"' and level='"+level.getSelectedItem()+"'";
            ResultSet rs=st.executeQuery(sql);
            
            if(rs.next())

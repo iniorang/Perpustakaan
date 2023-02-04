@@ -453,19 +453,19 @@ public class FBukuStaff extends javax.swing.JFrame {
 
     private void TabBukuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabBukuMouseClicked
         // TODO add your handling code here:
-         new FBuku().show();
+         new FBukuStaff().show();
          this.dispose();
     }//GEN-LAST:event_TabBukuMouseClicked
 
     private void TabTransaksiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabTransaksiMouseClicked
         // TODO add your handling code here:
-        new FTransaksi().show();
+        new FTransaksiStaff().show();
         this.dispose();
     }//GEN-LAST:event_TabTransaksiMouseClicked
 
     private void TabAnggotaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabAnggotaMouseClicked
         // TODO add your handling code here:
-        new FDataAnggota().show();
+        new FDataAnggotaStaff().show();
         this.dispose();
     }//GEN-LAST:event_TabAnggotaMouseClicked
 
