@@ -20,7 +20,7 @@ public class koneksi
   {
       try
       {
-         Class.forName("com.mysql.cj.jdbc.Driver");
+         Class.forName("com.mysql.cj.jdbc.Driver'");
              Connection koneksi = DriverManager.getConnection("jdbc:mysql://localhost/db_library","root","");
              return koneksi;
       }

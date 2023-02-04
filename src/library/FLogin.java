@@ -30,13 +30,21 @@ public class FLogin extends javax.swing.JFrame {
         try
         {
            Statement st=kon.createStatement();
-           String sql="SELECT * FROM tbl_staff WHERE username='"+user.getText()+"' and password='"+pass.getText()+"'";
+           String sql="SELECT * FROM tbl_staff WHERE username='"+user.getText()+"' and password='"+pass.getText()+"' and level='"+level.getSelectedItem()+"'";
            ResultSet rs=st.executeQuery(sql);
            
            if(rs.next())
            {
-                new FUtamaKepala().show();
-                this.dispose();
+               if(rs.getString("level").equals("kepala"))
+               {
+                   new FUtamaKepala().show();
+                   this.dispose();
+               }
+               else if(rs.getString("level").equals("pustakawan"))
+               {
+                   new FUtamaStaff().show();
+                   this.dispose();
+               }
            }
            else
            {
@@ -66,6 +74,8 @@ public class FLogin extends javax.swing.JFrame {
         user = new javax.swing.JTextField();
         pass = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        level = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -95,6 +105,10 @@ public class FLogin extends javax.swing.JFrame {
             }
         });
 
+        jLabel4.setText("Level");
+
+        level.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "kepala", "pustakawan" }));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -109,11 +123,13 @@ public class FLogin extends javax.swing.JFrame {
                         .addGap(51, 51, 51)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
-                            .addComponent(jLabel2))
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel4))
                         .addGap(44, 44, 44)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(user, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
-                            .addComponent(pass)))
+                            .addComponent(pass)
+                            .addComponent(level, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(137, 137, 137)
                         .addComponent(jButton1)))
@@ -132,9 +148,13 @@ public class FLogin extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(pass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(level, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(19, 19, 19))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -207,7 +227,9 @@ public class FLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JComboBox<String> level;
     private javax.swing.JPasswordField pass;
     private javax.swing.JTextField user;
     // End of variables declaration//GEN-END:variables
